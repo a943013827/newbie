@@ -32,6 +32,7 @@ int main()
         printf("client ip:%s,client port:%d\n",inet_ntop(AF_INET,&cli.sin_addr,buf,sizeof(buf)),ntohs(cli.sin_port));
         read(fd2,buf,sizeof(buf));
         printf("%s\n",buf);
+        close(fd2);
     }
     close(fd);
     return 0;

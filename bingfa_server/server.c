@@ -13,7 +13,8 @@
 
 void func(int i)
 {
-    waitpid(-1,NULL,0);
+ 
+    while(waitpid(-1,NULL,WNOHANG)>0);
     printf("get it \n");
 }
 int main()

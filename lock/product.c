@@ -1,4 +1,4 @@
-#include <stdlib.c>
+#include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
 
@@ -6,7 +6,7 @@ struct msg
 {
 	struct msg * next;
 	int i;
-}
+};
 
 struct msg *head;
 
@@ -50,5 +50,11 @@ int main()
 {
 	pthread_t tid1,tid2;
 	srand(time(NULL));
-	pthread_create(&tid1,NULL)
+	pthread_create(&tid1,NULL,consumer,NULL);
+    pthread_create(&tid2,NULL,producer,NULL);
+    pthread_join(tid1,NULL);
+    pthread_join(tid2,NULL);
+    pthread_mutex_destroy(&lock);
+    pthread_cond_destroy(&ready);    
 }
+
